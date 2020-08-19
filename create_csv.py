@@ -69,4 +69,20 @@ with open ("bus.csv","w",newline = '') as file:
 	writer4 = csv.writer(file)
 	writer4.writerows(table4)
 
-#after creating all this and uploading it to the sql only remains to add the foregins keys 
+#after creating all this and uploading it to the sql only remains to add the foregins keys
+#now the table that tells if there is or not route have destino, and actual , and bool true or false
+table5 = []
+index = 1
+for D in destino:
+	for actual in ciudades_col[D]:
+		#set probability in 90% of true, to have tickets if false means there is no tickets
+		n = random.randint(0,100)
+		if n>90:
+			ability = False
+		else:
+			ability = True
+		table5.append([index,actual,D,ability])
+		index += 1
+with open ("tickets_bol.csv","w",newline ='') as file:
+	writer5 = csv.writer(file)
+	writer5.writerows(table5)

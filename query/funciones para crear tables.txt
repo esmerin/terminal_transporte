@@ -1,0 +1,17 @@
+LOAD DATA LOCAL INFILE 'tickets_bol.csv' 
+INTO TABLE tickets_ability
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+
+
+ALTER TABLE tickets_ability
+ADD id_ticket int;
+
+DROP TABLE tickets_ability;
+
+create table tickets_ability(
+ id_ticket int ,
+ actual varchar(30),
+ destino varchar(30),
+ ability varchar(10)
+);
