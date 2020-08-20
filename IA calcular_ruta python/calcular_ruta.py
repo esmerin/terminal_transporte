@@ -85,7 +85,7 @@ def buscar_solucion_BFS(conexiones, estado_inicial, solucion):
 	return -1
 if __name__ == "__main__":
 	#inicio la base de datos
-	db = pymysql.connect("localhost","root","adminesmerin2","terminal" )
+	db = pymysql.connect("localhost","root","t","terminal" )
 	cursor = db.cursor()
 
 	#base de datos inicialisada
