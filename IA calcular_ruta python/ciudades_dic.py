@@ -6,15 +6,15 @@ for key in diccionario:
             "villavicencio","popallan","buenaventura"]
 """
 
-ciudades_col = {'bogota':{'medeillin','cali','cucuta','villavicencio','buenaventura'},
-            'medeillin':{'cartagena','bogota','manizales'},
+ciudades_col = {'bogota':{'medellin','cali','cucuta','villavicencio','buenaventura'},
+            'medellin':{'cartagena','bogota','manizales'},
             'cali':{'popayan','pereira','buenaventura','bogota'},
             'barranquilla':{'cartagena'},
-            'cartagena':{'barranquilla','medeillin', 'cucuta'},
+            'cartagena':{'barranquilla','medellin', 'cucuta'},
             'cucuta':{'bogota','cartagena'},
             'villavicencio':{'bogota'},
             'popayan':{'cali'},
-            'buenaventura':{"cali","pereira","bogota","medeillin"},
+            'buenaventura':{"cali","pereira","bogota","medellin"},
             'pereira':{'cali','buenaventura','manizales'},
-            'manizales':{'pereira','medeillin'}
+            'manizales':{'pereira','medellin'}
             }

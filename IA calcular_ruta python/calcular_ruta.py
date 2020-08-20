@@ -3,6 +3,24 @@
 from arbol import Nodo
 from ciudades_dic import ciudades_col
 import pymysql
+#ask if two nodes are valid by the number of tickets intead of if there a route
+def valid_ruta_ciudad(actual,destino):
+	try :
+		sql = 'select ability from tickets_ability where actual = "'+actual+'" and destino="'+destino+'";'
+		cursor.execute(sql)
+		r = cursor.fetchone()
+		if (r[0] == "False"):
+			return False
+		else:
+			if (r[0] == "True"):
+				return True
+			else:
+				print("logic error in the sql table reult query ",r[0],len(r[0]))
+				return False
+	except:
+		print(sql)
+		print("unable to open :'v")
+		return -1
 #ask the database if this route is posble by the moment
 def valid_route(ruta):
 	resultado = []
@@ -52,7 +70,11 @@ def buscar_solucion_BFS(conexiones, estado_inicial, solucion):
 				#en alguna parte de este codigo tengo que hacer la comprobacion de si la ruta es valida
 				# de no ser valida no dejar que se reprodusca con la funcion
 				# and valid_route(nodo)
-				hijo=Nodo(un_hijo)
+				#aprovechano que es un bucle for hago la comprobacion y doy un continue si es negativa
+				if valid_ruta_ciudad(dato_nodo,un_hijo):
+					hijo=Nodo(un_hijo)
+				else:
+					continue
 				lista_hijos.append(hijo)
 				if not hijo.en_lista(nodos_visitados) and not hijo.en_lista(nodos_frontera) :
 					nodos_frontera.append(hijo)
@@ -67,8 +89,10 @@ if __name__ == "__main__":
 	cursor = db.cursor()
 
 	#base de datos inicialisada
-	c = ["bogota","medeillin","cali","barranquilla","cartagena","cucuta","villavicencio","popayan","buenaventura","manizales","pereira"]
-	print("ciudades validas" , c)
+	c = ["bogota","medellin","cali","barranquilla","cartagena","cucuta","villavicencio","popayan","buenaventura","manizales","pereira"]
+	print("ciudades validas: ")
+	for ciudad in c:
+		print(ciudad)
 	estado_inicial= input("inserte donde esta:")
 	solucion = input("inserte para donde va: ")
 	nodo_solucion = buscar_solucion_BFS(ciudades_col,estado_inicial,solucion)
@@ -76,7 +100,7 @@ if __name__ == "__main__":
 	resultado = []
 	nodo=nodo_solucion
 	if nodo == -1:
-		print("no solution")
+		print("not solution")
 	else:
 		while nodo.get_padre() != None:
 			resultado.append(nodo.get_datos())
