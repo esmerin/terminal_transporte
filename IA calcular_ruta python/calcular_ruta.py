@@ -15,11 +15,11 @@ def valid_ruta_ciudad(actual,destino):
 			if (r[0] == "True"):
 				return True
 			else:
-				print("logic error in the sql table reult query ",r[0],len(r[0]))
+				print("logic error in the sql table reult query ",r[0])
 				return False
 	except:
 		print(sql)
-		print("unable to open :'v")
+		print("unable to open error#1")
 		return -1
 #ask the database if this route is posble by the moment
 def valid_route(ruta):
@@ -41,7 +41,7 @@ def valid_route(ruta):
 				return False
 		except:
 			print(sql,i,len(resultado))
-			print("unable to open :'v")
+			print("unable to open error#2")
 			return -1
 	return True
 

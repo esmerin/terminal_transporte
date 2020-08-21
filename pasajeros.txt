@@ -1,3 +1,0 @@
-select count(*) as pasajeros,destino
-from viajes_en_bus
-group by destino;
